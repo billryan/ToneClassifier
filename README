@@ -1,0 +1,30 @@
+This dir contains the data for training/testing a tone classifier.
+
+train/              training data
+test/               test data
+
+Each dir includes the f0 and engery features extracted from 
+corresponding wav files. Each wav file is the pronunciation of
+a single Chinese character. 
+
+Note that the length of different wav file may be different.
+Hence, the f0/engy files corresponding to different character
+may also have different length. 
+But for the same character, the f0 file will have exactly the
+same length as the engy file.
+
+
+The naming convention for subdir and file names are as below:
+
+1. subdir name indicates the correct tone. 
+2. filename pattern is 
+
+   {pron}{tone_lable}.f0
+   {pron}{tone_lable}.engy
+
+   where pron is the pronunciation of the character and tone_lable
+   is the tone of that character, i.e. 1, 2, 3 or 4.
+
+Please design a tone classifer with the f0/engy file as the input
+and output the tone label. 
+

@@ -1,0 +1,12 @@
+仅以训练集中每个声调目录下的音素的f0、energy的均值作为声调模型的值
+测试时，判断音素的f0、energy离哪个模型的距离最小，则认为属于哪个模型
+
+
+#train:
+python train.py train/ trainmodel
+
+#test:
+python test.py test trainmodel 
+	test set accuracy: 0.400000
+python test.py test_new trainmodel
+	test_new set accuracy: 0.385965
