@@ -9,12 +9,12 @@ if (len(sys.argv) != 2):
 
 path = sys.argv[1]
 if (path[-1] == '/'):
-    dataset_new = path[:-1] + '_ops'
+    dataset_new = path[:-1] + '_pos/'
 else:
-    dataset_new = path + '_pos'
+    dataset_new = path + '_pos/'
 
-if not (os.path.exists(dataset_new)):
-    os.makedirs(dataset_new)
+#if not (os.path.exists(dataset_new)):
+#    os.makedirs(dataset_new)
 
 f0dict = {}
 engydict = {}
@@ -51,7 +51,7 @@ def get_recursive_file_list(path):
 get_recursive_file_list(path)
 
 # moving average filter
-window = 3
+window = 5
 maf = []
 for i in xrange(window):
     maf.append(1.0/window)
@@ -72,7 +72,7 @@ for fn in f0files:
     feature_engy_new = np.take(feature_engy, pos_index)
 
     dirs = fn.split('/')
-    dataset_newdir = dataset_new+'/'+dirs[-2]+'/'
+    dataset_newdir = dataset_new+dirs[-3]+'/'+dirs[-2]+'/'
     if not (os.path.exists(dataset_newdir)):
         os.makedirs(dataset_newdir)
     np.savetxt(dataset_newdir+os.path.basename(fn),feature_f0_new, delimiter='\n',fmt='%s')
