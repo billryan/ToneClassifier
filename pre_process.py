@@ -63,7 +63,8 @@ for fn in f0files:
     strs = fn.split(".")
     engyfn = strs[0]+".engy"
     feature_f0 = np.loadtxt(fn)
-    feature_f0 = np.convolve(feature_f0, maf, 'same')
+    #feature_f0 = np.convolve(feature_f0, maf, 'same')
+    feature_f0 = np.convolve(feature_f0, maf, 'valid')
     feature_engy = np.loadtxt(engyfn)
     feature_engy = np.convolve(feature_engy, maf, 'same')
 
