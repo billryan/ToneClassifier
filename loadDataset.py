@@ -11,7 +11,7 @@ def loadDataFromPath(dataStr):
     for dirName in dirList:
         fileList = os.listdir(dataStr + dirName)
         for fileName in fileList:
-            filePrefix, fileSuffix = os.path.segext(fileName)
+            filePrefix, fileSuffix = os.path.splitext(fileName)
             fileSuffix = fileSuffix[1:]
             fileRead = open(dataStr + dirName + '/' + fileName)
             featureList = [float(line) for line in fileRead.readlines()]
@@ -28,8 +28,8 @@ def loadDataFromPath(dataStr):
 seg = segmentation
 crossValidationShare = 1 / M
 """
-def segData(tFList, tLList, cVShare):
-    segData = {}
+def segDataset(tFList, tLList, cVShare):
+    segFeatureDic = {}
     segLabel = {}
     tFLen = len(tFList)
     spacedPointsIndex = [i for i in xrange(0, tFLen, tFLen / cVShare)]
@@ -40,12 +40,12 @@ def segData(tFList, tLList, cVShare):
 
     for i in xrange(1, cVShare + 1):   
         for j in xrange(spacedPointsIndex[i - 1], spacedPointsIndex[i]):
-            if segData.has_key(i):
-                segData[i].append(tFList[tFIndex[j]])
-                segLabel[i].append(tFList[tFIndex[j]])
+            if segFeatureDic.has_key(i):
+                segFeatureDic[i].append(tFList[tFIndex[j]])
+                segLabel[i].append(tLList[tFIndex[j]])
             else:
-                segData[i] = []
+                segFeatureDic[i] = []
                 segLabel[i] = []
-                segData[i].append(tFList[tFIndex[j]])
-                segLabel[i].append(tFList[tFIndex[j]])
-    return segData, segLabel
+                segFeatureDic[i].append(tFList[tFIndex[j]])
+                segLabel[i].append(tLList[tFIndex[j]])
+    return segFeatureDic, segLabel
