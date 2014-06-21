@@ -27,6 +27,6 @@ def featureNorm1(datasetDic, intervalNum):
             else:
                 featureDic[key] = {}
                 featureDic[key]['feature'] = []
-                featureDic[key]['label'] = dataDic[key]['label']
+                featureDic[key]['label'] = datasetDic[key]['label']
                 featureDic[key]['feature'].extend([f0Mu, f0Sigma, engyMu, engySigma])
     return featureDic

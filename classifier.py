@@ -19,15 +19,15 @@ def classifierCV(segFeature, segFeatLabel, cvShare):
         trainFeat = []
         trainLabel = []
         
-        for j in range(1, cvShare + 1):
+        for j in xrange(1, cvShare + 1):
             if j != i:
                 trainFeat.extend(segFeature[j])
                 trainLabel.extend(segFeatLabel[j])
         #CList = [i / 10000. for i in range(1,11)]
-        CList = [0.0001, 0.001, 0.01, 0.1, 1, 10]
+        CList = [0.0001, 0.001, 0.01, 0.1, 1, 5]
 
         for C in CList:
-            print ("Train classifier for C = %f using kerner function %s") %(C, kernelFunc)
+            print ("Train classifier for C = %f using kernel function %s") %(C, kernelFunc)
             kernelSVC = SVC(C,kernel=kernelFunc)
             kernelSVC.fit(trainFeat, trainLabel)
             
