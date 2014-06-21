@@ -13,7 +13,7 @@ engydict = {}
 f0files = []
 # engyfiles = []
 
-#获取目录下所有f0文件
+#get the f0 file recursively
 def get_recursive_file_list(path):
     current_files = os.listdir(path)
     for file_name in current_files:
@@ -26,10 +26,10 @@ def get_recursive_file_list(path):
  
     return 0
 
-#调用函数，获取所有f0文件
+#
 get_recursive_file_list(path)
 
-#对于每种音节和音调，统计其均值
+#calculate the average value of pitch
 for fn in f0files:
     strs = fn.split(".")
     engyfn = strs[0]+".engy"
@@ -59,7 +59,7 @@ for fn in f0files:
     fp.close()
     efp.close()
 
-#统计每个目录对应的音调
+#do stats
 onef0 = twof0 = threef0 = fourf0 = 0
 onegy = twogy = threegy = fourgy = 0
 n1 = n2 = n3 = n4 = 0
@@ -91,6 +91,3 @@ print "one: %f %f" %(onef0/n1, onegy/n1)
 print "two: %f %f" %(twof0/n2, twogy/n2)
 print "three: %f %f" %(threef0/n3, threegy/n3)
 print "four: %f %f" %(fourf0/n4, fourgy/n4)
-    
-
-

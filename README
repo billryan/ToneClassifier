@@ -22,9 +22,6 @@ The naming convention for subdir and file names are as below:
    {pron}{tone_lable}.f0
    {pron}{tone_lable}.engy
 
-   where pron is the pronunciation of the character and tone_lable
-   is the tone of that character, i.e. 1, 2, 3 or 4.
+   where pron is the pronunciation of the character and tone_lable is the tone of that character, i.e. 1, 2, 3 or 4.
 
-Please design a tone classifer with the f0/engy file as the input
-and output the tone label. 
-
+Please design a tone classifer with the f0/engy file as the input and output the tone label. 
