@@ -33,7 +33,7 @@ if __name__ == '__main__':
     for intervalNum in xrange(minIntervalNum, maxIntervalNum):
         print ("intervalNum = %d") %intervalNum
         print ("Feature Normalization for trainDataset...")
-        trainDataFeatureDic = featureNorm.featureNorm2(trainDatasetDic, intervalNum)
+        trainDataFeatureDic = featureNorm.featureNorm1(trainDatasetDic, intervalNum)
         trainFeatureList = [trainDataFeatureDic[key]['feature'] for key in trainDataFeatureDic.keys()]
         trainLabelList = [trainDataFeatureDic[key]['label'] for key in trainDataFeatureDic.keys()]
 
@@ -54,7 +54,7 @@ if __name__ == '__main__':
     print ("Optimal IntervalNum = %d") %optimalInterval
     
     #use optimalC and optimalInterval to train classifier SVC
-    trainDataFeatureDic = featureNorm.featureNorm2(trainDatasetDic, optimalInterval)
+    trainDataFeatureDic = featureNorm.featureNorm1(trainDatasetDic, optimalInterval)
     trainFeatureList = [trainDataFeatureDic[key]['feature'] for key in trainDataFeatureDic.keys()]
     trainLabelList = [trainDataFeatureDic[key]['label'] for key in trainDataFeatureDic.keys()]
 
@@ -68,12 +68,12 @@ if __name__ == '__main__':
     testNewDatasetDic = loadDataset.loadDataFromPath(testNewDataset)
     
     print "Feature normalizatin for testDataset..."
-    testDataFeatureDic = featureNorm.featureNorm2(testDatasetDic, optimalInterval)
+    testDataFeatureDic = featureNorm.featureNorm1(testDatasetDic, optimalInterval)
     testFeatureList = [testDataFeatureDic[key]['feature'] for key in testDataFeatureDic.keys()]
     testLabelList = [testDataFeatureDic[key]['label'] for key in testDataFeatureDic.keys()]
     
     print "Feature normalizatin for testNewDataset..."
-    testNewDataFeatureDic = featureNorm.featureNorm2(testNewDatasetDic, optimalInterval)
+    testNewDataFeatureDic = featureNorm.featureNorm1(testNewDatasetDic, optimalInterval)
     testNewFeatureList = [testNewDataFeatureDic[key]['feature'] for key in testNewDataFeatureDic.keys()]
     testNewLabelList = [testNewDataFeatureDic[key]['label'] for key in testNewDataFeatureDic.keys()]
     
